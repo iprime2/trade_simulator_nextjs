@@ -40,7 +40,7 @@ export default function InputForm() {
 
   // useEffect(() => {
   //   if (selectedAsset) {
-  //     fetch("http://localhost:8000/api/v1/select-asset", {
+  //     fetch(`${process.env.NEXT_PUBLIC_PYTHON_API_URL}/select-asset`, {
   //       method: "POST",
   //       headers: { "Content-Type": "application/json" },
   //       body: JSON.stringify({ asset: selectedAsset })
@@ -67,7 +67,7 @@ export default function InputForm() {
     setLoading(true)
     try {
       if (selectedAsset) {
-        fetch("http://localhost:8000/api/v1/select-asset", {
+        fetch(`${process.env.NEXT_PUBLIC_PYTHON_API_URL}/select-asset`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ asset: selectedAsset })

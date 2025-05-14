@@ -6,7 +6,7 @@ export async function simulateTrade(data: {
     volatility: number
     asset: string
   }) {
-    const res = await fetch("http://localhost:8000/api/v1/simulate", {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_PYTHON_API_URL}/simulate`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),

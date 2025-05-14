@@ -23,7 +23,7 @@ export const useTickStore = create<Store>((set, get) => ({
   history: [], 
 
   fetchTick: async () => {
-    const res = await fetch("http://localhost:8000/api/v1/tick")
+    const res = await fetch(`${process.env.NEXT_PUBLIC_PYTHON_API_URL}/tick`)
     const data = await res.json()
     const now = new Date().toLocaleTimeString()
     const latency = data.latency_ms ?? 0
@@ -35,7 +35,7 @@ export const useTickStore = create<Store>((set, get) => ({
   },
 
   setLiveConfig: async (config) => {
-    await fetch("http://localhost:8000/api/v1/live-config", {
+    await fetch(`${process.env.NEXT_PUBLIC_PYTHON_API_URL}/live-config`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(config),
@@ -43,7 +43,7 @@ export const useTickStore = create<Store>((set, get) => ({
   },
 
   fetchLiveOutput: async () => {
-    const res = await fetch("http://localhost:8000/api/v1/live-output")
+    const res = await fetch(`${process.env.NEXT_PUBLIC_PYTHON_API_URL}/live-output`)
     const data = await res.json()
     set({ metrics: data })
   },
